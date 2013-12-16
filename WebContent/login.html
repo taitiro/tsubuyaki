@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/tsubuyaki/css/style.css">
+<script type="text/javascript" src="/tsubuyaki/js/tsubuyaki.js"></script>
+<title>ユーザ認証</title>
+</head>
+<body>
+  <h2>ログイン画面</h2>
+  <form action="j_security_check" method="POST" id="form">
+    <div>
+      <label>ユーザＩＤ <input type="text" name="j_username" required></label>
+    </div>
+    <div>
+      <label>パスワード <input type="password" name="j_password" required></label>
+    </div>
+    <div>
+      <input type="submit" value="ログイン"> <input type="reset" value="取消">
+    </div>
+  </form>
+</body>
+</html>

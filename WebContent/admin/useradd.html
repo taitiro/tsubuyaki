@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ユーザー作成</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<script type="text/javascript" src="../js/tsubuyaki.js"></script>
+<script type="text/javascript" src="../js/md5.js"></script>
+</head>
+<body>
+  <h1>ユーザー作成</h1>
+  <form action="UserAddServlet" method="post" id="form">
+  <div>
+  <label>ユーザーID:<input type="text" name="name" required></label>
+  </div>
+  <div>
+  <label>パスワード:<input type="password" name="password" id="password" required></label>
+  </div>
+  <div>
+  <fieldset>ロール：
+  <label><input type="radio" name="role" value="admin" />admin</label>
+  <label><input type="radio" name="role" value="user" checked/>user</label>
+  </fieldset>
+  </div>
+  <div>
+  <label>スクリーンネーム:<input type="text" name="realname"></label>
+  </div>
+  <div>
+  <label>自己紹介:<textarea name="userdesc"></textarea></label>
+  </div>
+  <div>
+  <label>住所:<input type="text" name="address"></label>
+  </div>
+  <div>
+  <label>ホームページ:<input type="url" name="homepage"></label>
+  </div>
+  <div>
+  <label>アイコン画像URL:<input type="url" name="icon"></label>
+  </div>
+  <div>
+  <input type="submit" value="送信">
+  <input type="reset" value="リセット">
+  <button id="back">戻る</button>
+  </div>
+  </form>
+</body>
+</html>
