@@ -658,17 +658,3 @@ var CybozuLabs = {
 new function() {
 	CybozuLabs.MD5.calc = navigator.userAgent.match(/Firefox/) ? CybozuLabs.MD5.calc_Fx : CybozuLabs.MD5.calc_std;
 };
-
-//MD5変換（http://labs.cybozu.co.jp/blog/mitsunari/2007/07/md5js_1.htmlのライブラリを使用）
-function convertMD5() {
-'use strict';
-document.getElementById('password').value = CybozuLabs.MD5.calc(document.getElementById('password').value);
-return true;
-};
-
-function init() {
-'use strict';
-document.getElementById('form').onsubmit = convertMD5;
-};
-
-window.onload = init;

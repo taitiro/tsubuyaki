@@ -23,7 +23,7 @@ UserBean thisUser = userDAO.getUser(request.getParameter("name"));
   <label>ユーザーID（変更できません）:<input type="text" name="name" value=<%= request.getParameter("name") %> readonly></label>
   </div>
   <div>
-  <label>パスワード:<input type="password" name="password" id="password" required></label>
+  <label>パスワード:<input type="password" name="password" class="alphabet rawPassword" required></label>
   </div>
   <div>
   <label>スクリーンネーム:<input type="text" name="realname" value="<%= thisUser.getRealname() %>"></label>

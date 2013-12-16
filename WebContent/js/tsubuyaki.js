@@ -37,16 +37,27 @@ function validateForm() {
                 return false;
             }
         }
+        if ((inputStr[i].className.indexOf('alphabet') != -1) && !inputStr[i].value.match(/^[a-zA-Z0-9]+$/)) {
+            alert('パスワードとユーザー名は半角英数で入力してください');
+            console.log(inputStr[i].value);
+            return false;
+        }else{
+            console.log("大丈夫でした" + i );
+            console.log(inputStr[i].className.indexOf('alphabet') + ":" + inputStr[i].value);
+            
+        }
         if (inputStr[i].value.match(/<("[^"]*"|'[^']*'|[^'">])*>/)) {
             alert('HTMLタグを入力しちゃやーよ ');
             return false;
         }
-        
     }
     // 変換作業
     for (i = 0; i < inputStr.length; i++) {
         if (inputStr[i].className.indexOf('cookie') != -1) {
             inputStr[i].value = encodeURI(inputStr[i].value);
+        }
+        if (inputStr[i].className.indexOf('rawPassword') != -1) {
+            inputStr[i].value = CybozuLabs.MD5.calc(inputStr[i].value);
         }
         // 送信ボタンを使用不可に
         if ((inputStr[i].getAttribute('type') == 'submit')) {

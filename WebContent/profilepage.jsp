@@ -24,9 +24,10 @@
     </h1>
     <p class="desc">
       <a href="<jsp:getProperty name="thisUser" property="homepage" />">
-      <img src="<jsp:getProperty name="thisUser" property="icon" />" class="icon"></a>
+      <img src="<jsp:getProperty name="thisUser" property="icon" />" class="icon">
+      </a>
       <jsp:getProperty name="thisUser" property="userdesc" /><br />
-      住所：<jsp:getProperty name="thisUser" property="address" /> 権限：<jsp:getProperty name="thisUser" property="role" />
+      住所：<address><jsp:getProperty name="thisUser" property="address" /></address> 権限：<jsp:getProperty name="thisUser" property="role" />
     </p>
     <p class="topHeader">
       <a href="TsubuyakiGetServlet">TOPへ戻る</a>

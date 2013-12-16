@@ -11,7 +11,7 @@
   <h1>つぶやきを書き込む</h1>
   <form action="TsubuyakiAddServlet" method="post">
     <div>
-      <label>ユーザー名：<input type="text" name="name" value="<%= request.getRemoteUser() %>" readonly></label>
+      <label>ユーザー名：<input type="text" name="name" value="<%= request.getRemoteUser() %>" class="alphabet" readonly></label>
     </div>
     <div>
       <label>つぶやき内容<textarea name="value" required></textarea></label>
