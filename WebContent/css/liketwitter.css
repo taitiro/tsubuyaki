@@ -19,6 +19,9 @@ body {
 	font-family: Verdana;
 }
 
+address{
+  display:inline;
+}
 
 /* color
 ------------------------------------------- */
@@ -60,7 +63,7 @@ header h1 a {
 	background: #FFFFFF;
 	font-size: 180%;
 }
-header p.desc{
+header div.desc{
 	position: absolute;
 	top: 120px;
 	left: 20px;

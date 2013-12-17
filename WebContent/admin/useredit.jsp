@@ -18,9 +18,10 @@ UserBean thisUser = userDAO.getUser(request.getParameter("name"));
 </head>
 <body>
   <h1>ユーザー編集</h1>
+  <% if((request.getParameter("name").equals(request.getRemoteUser())) || (request.isUserInRole("admin"))){ %>
   <form action="UserEditServlet" method="post" id="form">
   <div>
-  <label>ユーザーID（変更できません）:<input type="text" name="name" value=<%= request.getParameter("name") %> readonly></label>
+  <label>ユーザーID（変更できません）:<input type="text" name="name" value="<%= request.getParameter("name") %>" readonly></label>
   </div>
   <div>
   <label>パスワード:<input type="password" name="password" class="alphabet rawPassword" required></label>
@@ -52,5 +53,8 @@ UserBean thisUser = userDAO.getUser(request.getParameter("name"));
   <button id="back">戻る</button>
   </div>
   </form>
+  <% }else{ %>
+  userさんは自分以外の情報は編集できません
+  <% } %>
 </body>
 </html>

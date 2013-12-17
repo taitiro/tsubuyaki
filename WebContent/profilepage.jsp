@@ -22,13 +22,13 @@
       <jsp:getProperty name="thisUser" property="realname" />
       （@<jsp:getProperty name="thisTsubuyakiArray" property="name" />）さんのつぶやき一覧
     </h1>
-    <p class="desc">
+    <div class="desc">
       <a href="<jsp:getProperty name="thisUser" property="homepage" />">
       <img src="<jsp:getProperty name="thisUser" property="icon" />" class="icon">
       </a>
       <jsp:getProperty name="thisUser" property="userdesc" /><br />
       住所：<address><jsp:getProperty name="thisUser" property="address" /></address> 権限：<jsp:getProperty name="thisUser" property="role" />
-    </p>
+    </div>
     <p class="topHeader">
       <a href="TsubuyakiGetServlet">TOPへ戻る</a>
       <%
@@ -57,6 +57,7 @@
     %>
   </article>
   <footer>
+    <p>このページは<a href="http://c-brains.jp/blog/wsg/09/09/29-225118.php">「tweetage」</a>というCSSテンプレートを改造して使用しています．</p>
     <%
         if (request.isUserInRole("admin")) {
     %>

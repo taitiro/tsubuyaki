@@ -12,23 +12,55 @@
 		<error-code>405</error-code>
 		<location>/error/405.html</location>
 	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.html</location>
+	</error-page>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	<security-constraint>
+		<display-name>Certification Area</display-name>
 		<web-resource-collection>
 			<web-resource-name>Certification Area</web-resource-name>
-			<url-pattern>/admin/*</url-pattern>
+			<url-pattern>/admin/index.html</url-pattern>
+			<url-pattern>/admin/useredit.jsp</url-pattern>
 			<url-pattern>/write.jsp</url-pattern>
+			<url-pattern>/TsubuyakiAddServlet</url-pattern>
+			<url-pattern>/UserEditServlet</url-pattern>
+			<url-pattern>/UsersGetServlet</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
 			<role-name>user</role-name>
 		</auth-constraint>
 	</security-constraint>
-
+	<security-constraint>
+		<display-name>Admin Area</display-name>
+		<web-resource-collection>
+			<web-resource-name>Admin Area</web-resource-name>
+			<url-pattern>/admin/useradd.html</url-pattern>
+			<url-pattern>/admin/userlist.jsp</url-pattern>
+			<url-pattern>/admin/userdelete.jsp</url-pattern>
+			<url-pattern>/TsubuyakiDeleteServlet</url-pattern>
+			<url-pattern>/UserAddServlet</url-pattern>
+			<url-pattern>/UserDeleteServlet</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<display-name>No direct access Area</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/profilepage.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+		</auth-constraint>
+	</security-constraint>
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>

@@ -39,7 +39,7 @@ function validateForm() {
         }
         if ((inputStr[i].className.indexOf('alphabet') != -1) && !inputStr[i].value.match(/^[a-zA-Z0-9]+$/)) {
             alert('パスワードとユーザー名は半角英数で入力してください');
-            console.log(inputStr[i].value);
+            console.log("error:" + inputStr[i].value);
             return false;
         }else{
             console.log("大丈夫でした" + i );

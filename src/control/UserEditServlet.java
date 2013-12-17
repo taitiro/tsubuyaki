@@ -43,6 +43,6 @@ public class UserEditServlet extends HttpServlet {
         } else if (ret == 0) {
             System.out.println("No change at DATABASE");
         }
-        response.sendRedirect("UsersGetServlet");
+        response.sendRedirect("../index.jsp");
     }
 }
