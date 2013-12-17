@@ -19,7 +19,8 @@ function confirmSubmit(str) {
 function validateForm() {
     'use strict';
     var i = 0, // イテレータ
-    inputStr = document.getElementsByTagName('input');// inputタグ要素のリスト
+    inputStr = document.getElementsByTagName('input'),// inputタグ要素のリスト
+    textareaStr = document.getElementsByTagName('textarea');
     // 全てのinputタグの中身についてチェック（type=submitも．逆に言うとselectとかoptionとかはチェックしてない）
     for (i = 0; i < inputStr.length; i++) {
         // 日付チェック
@@ -27,7 +28,7 @@ function validateForm() {
                 && !inputStr[i].value.match(/^\d{4}-\d{2}-\d{2}$/)) {
             alert('日付は0000-00-00の形式で入力してください: ' + inputStr[i].value);
             return false;
-        } else if ((inputStr[i].getAttribute('type') == 'number')) {// typeがnumber型の場合，数値に当てはまるか検証
+        } else if ( (inputStr[i].getAttribute('type') == 'number')) {// typeがnumber型の場合，数値に当てはまるか検証
             if ((inputStr[i].className.indexOf('int') != -1)
                     && !inputStr[i].value.match(/^-{0,1}\d+$/)) {// classにintがある場合，整数に当てはまるか検証
                 alert('整数は半角数字と行頭のマイナスで入力してください: ' + inputStr[i].value);
@@ -37,30 +38,27 @@ function validateForm() {
                 return false;
             }
         }
-        if ((inputStr[i].className.indexOf('alphabet') != -1) && !inputStr[i].value.match(/^[a-zA-Z0-9]+$/)) {
+        if ( (inputStr[i].className.indexOf('alphabet') != -1) && !inputStr[i].value.match(/^[a-zA-Z0-9]+$/)) {
             alert('パスワードとユーザー名は半角英数で入力してください');
-            console.log("error:" + inputStr[i].value);
             return false;
-        }else{
-            console.log("大丈夫でした" + i );
-            console.log(inputStr[i].className.indexOf('alphabet') + ":" + inputStr[i].value);
-            
         }
         if (inputStr[i].value.match(/<("[^"]*"|'[^']*'|[^'">])*>/)) {
             alert('HTMLタグを入力しちゃやーよ ');
             return false;
         }
     }
+    
+    for (i = 0; i < textareaStr.length; i++) {
+        if (textareaStr[i].value.match(/<("[^"]*"|'[^']*'|[^'">])*>/)) {
+            alert('HTMLタグを入力しちゃやーよ ');
+            return false;
+        }
+    }
+    
     // 変換作業
     for (i = 0; i < inputStr.length; i++) {
-        if (inputStr[i].className.indexOf('cookie') != -1) {
-            inputStr[i].value = encodeURI(inputStr[i].value);
-        }
-        if (inputStr[i].className.indexOf('rawPassword') != -1) {
-            inputStr[i].value = CybozuLabs.MD5.calc(inputStr[i].value);
-        }
         // 送信ボタンを使用不可に
-        if ((inputStr[i].getAttribute('type') == 'submit')) {
+        if ( inputStr[i].getAttribute('type') == 'submit') {
             inputStr[i].disabled = true;
         }
     }

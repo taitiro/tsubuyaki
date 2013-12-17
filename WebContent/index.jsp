@@ -45,9 +45,9 @@
       %>
       <a href="admin/userlist.jsp">ユーザー管理</a>
       <%
-          }else if(request.getRemoteUser() != null) {
+          } else if (request.getRemoteUser() != null) {
       %>
-      <a href="admin/useredit.jsp?name=<%= request.getRemoteUser() %>">プロフィール編集</a>
+      <a href="admin/useredit.jsp?name=<%=request.getRemoteUser()%>">プロフィール編集</a>
       <%
           }
       %>
@@ -70,7 +70,9 @@
     %>
   </article>
   <footer>
-    <p>このページは<a href="http://c-brains.jp/blog/wsg/09/09/29-225118.php">「tweetage」</a>というCSSテンプレートを改造して使用しています．</p>
+    <p>
+      このページは<a href="http://c-brains.jp/blog/wsg/09/09/29-225118.php">「tweetage」</a>というCSSテンプレートを改造して使用しています．
+    </p>
     <%
         if (request.getRemoteUser() != null) {
     %>
