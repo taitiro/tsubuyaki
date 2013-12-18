@@ -29,25 +29,26 @@ public class TsubuyakiDAO extends DAOBase {
         return ret;
     }
 
-    public TsubuyakiArrayBean getAllTsubuyaki() throws DatabaseException{
+    public TsubuyakiArrayBean getAllTsubuyaki() throws DatabaseException {
         PreparedStatement prestmt = null;
         ResultSet result = null;
         ArrayList<TsubuyakiBean> tsubuyakiArray = new ArrayList<TsubuyakiBean>();
         open();
         try {
-            prestmt = con.prepareStatement("SELECT tsubuyaki.name, value, date, realname "
+            prestmt = con.prepareStatement("SELECT tsubuyaki.name, value, date, realname, icon "
                     + "FROM tsubuyaki INNER JOIN profile ON profile.name = tsubuyaki.name "
                     + "ORDER BY date DESC ");
             result = prestmt.executeQuery();
-            while(result.next()){
-                tsubuyakiArray.add(new TsubuyakiBean(result.getString("tsubuyaki.name"),result.getString("value"),result.getTimestamp("date"),result.getString("realname")));
+            while (result.next()) {
+                tsubuyakiArray.add(new TsubuyakiBean(result.getString("tsubuyaki.name"), result.getString("value"),
+                        result.getTimestamp("date"), result.getString("realname"), result.getString("icon")));
             }
         } catch (SQLException e) {
             throw new DatabaseException(e);
         } finally {
-            close(prestmt,result);
+            close(prestmt, result);
         }
-        return new TsubuyakiArrayBean("All",tsubuyakiArray);
+        return new TsubuyakiArrayBean("All", tsubuyakiArray);
     }
 
     public TsubuyakiArrayBean getTsubuyakiByName(String name) throws DatabaseException {
@@ -56,14 +57,15 @@ public class TsubuyakiDAO extends DAOBase {
         ArrayList<TsubuyakiBean> tsubuyakiArray = new ArrayList<TsubuyakiBean>();
         open();
         try {
-            prestmt = con.prepareStatement("SELECT tsubuyaki.name, value, date, realname "
+            prestmt = con.prepareStatement("SELECT tsubuyaki.name, value, date, realname, icon "
                     + "FROM tsubuyaki INNER JOIN profile ON (profile.name = tsubuyaki.name) AND (profile.name = ? ) "
                     + "ORDER BY date DESC ");
             prestmt.setString(1, name);
             result = prestmt.executeQuery();
             while (result.next()) {
-                tsubuyakiArray.add(new TsubuyakiBean(result.getString("tsubuyaki.name"), result.getString("value"), result
-                        .getTimestamp("date"),result.getString("realname")));
+                tsubuyakiArray.add(new TsubuyakiBean(result.getString("tsubuyaki.name"), result.getString("value"),
+                        result
+                                .getTimestamp("date"), result.getString("realname"), result.getString("icon")));
             }
         } catch (SQLException e) {
             throw new DatabaseException(e);

@@ -104,7 +104,12 @@ section.item {
 	width: 520px;
 	padding: 10px 0;
 	border-top: 1px #CCCCCC dashed;
-	background: url(img/ic_item.gif) no-repeat 0 10px;
+	background-repeat: no-repeat;
+	background-position: 0 10px;
+	background-size:48px 48px;  
+    -moz-background-size:  48px 48px; /* Firefox—p */  
+    -webkit-background-size:  48px 48px; /* Safari,Google Chrome—p */  
+    -o-background-size:  48px 48px; /* Opera—p */  
 }
 
 section.item:last-child {

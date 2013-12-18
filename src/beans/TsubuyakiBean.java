@@ -15,6 +15,7 @@ public class TsubuyakiBean implements Serializable {
     private String value;
     private Timestamp timestamp;
     private String realName = "unknown";
+    private String icon = "";
     
     /**
      * Default constructor. 
@@ -32,8 +33,16 @@ public class TsubuyakiBean implements Serializable {
     public TsubuyakiBean(String name, String value, Date date, String realName) {
         this.name = name;
         this.value = value;
-        setRealName(realName);
+        this.setRealName(realName);
         this.setTimestamp(date);
+    }
+    
+    public TsubuyakiBean(String name, String value, Date date, String realName, String icon) {
+        this.name = name;
+        this.value = value;
+        this.setRealName(realName);
+        this.setTimestamp(date);
+        this.setIcon(icon);
     }
     public TsubuyakiBean(String name, String value, String datestr) {
         this.name = name;
@@ -43,8 +52,16 @@ public class TsubuyakiBean implements Serializable {
     public TsubuyakiBean(String name, String value, String datestr, String realName) {
         this.name = name;
         this.value = value;
-        setRealName(realName);
+        this.setRealName(realName);
         this.setTimestamp(datestr);
+    }
+    
+    public TsubuyakiBean(String name, String value, String datestr, String realName, String icon) {
+        this.name = name;
+        this.value = value;
+        this.setRealName(realName);
+        this.setTimestamp(datestr);
+        this.setIcon(icon);
     }
 
     public String getName() {
@@ -80,6 +97,12 @@ public class TsubuyakiBean implements Serializable {
     }
     public void setRealName(String realName) {
         this.realName = realName;
+    }
+    public String getIcon() {
+        return icon;
+    }
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
 }

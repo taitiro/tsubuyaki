@@ -58,7 +58,7 @@
         ArrayList<TsubuyakiBean> tsubuyakiArray = allTsubuyaki.getTsubuyakiArray();
         for (TsubuyakiBean tsubuyakiBean : tsubuyakiArray) {
     %>
-    <section class="item">
+    <section class="item" style="background-image: url('<%=tsubuyakiBean.getIcon()%>')">
       <h2>
         <a href="TsubuyakiGetServlet?name=<%=tsubuyakiBean.getName()%>"><%=tsubuyakiBean.getRealName()%>(@<%=tsubuyakiBean.getName()%>)</a>
       </h2>
