@@ -654,7 +654,8 @@ var CybozuLabs = {
 	} // end of MD5
 }; // end of CybozuLabs
 
-
+/*
 new function() {
 	CybozuLabs.MD5.calc = navigator.userAgent.match(/Firefox/) ? CybozuLabs.MD5.calc_Fx : CybozuLabs.MD5.calc_std;
 };
+*/
