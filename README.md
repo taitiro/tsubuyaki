@@ -1,9 +1,10 @@
 ﻿tsubuyaki *  CMS like twitter ( a exercises for Web Aplication)
 =====
 https://github.com/taitiro/tsubuyaki.git
-つぶやき掲示板みたいなもの．
+つぶやき掲示板みたいなもの．データベースの準備はtsubuyakidb.sqlを使ってください
 
 #プログラム構造
+
 ※特に明記がない限り拡張子は.java
 
 ##database（tsubuyakidb）
