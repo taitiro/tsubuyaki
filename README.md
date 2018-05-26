@@ -1,27 +1,28 @@
 ﻿tsubuyaki *  CMS like twitter ( a exercises for Web Aplication)
 =====
 https://github.com/taitiro/tsubuyaki.git
+
 つぶやき掲示板みたいなもの．データベースの準備はtsubuyakidb.sqlを使ってください
 
-#プログラム構造
+# プログラム構造
 
-※特に明記がない限り拡張子は.java
+* 特に明記がない限り拡張子は.java
 
-##database（tsubuyakidb）
-###tsubuyakiテーブル
+## database（tsubuyakidb）
+### tsubuyakiテーブル
 * name（つぶやいたユーザー名，VARCHAR型255文字まで）
 * value（つぶやきの内容，VARCHAR型140文字まで）
 * data（つぶやいた日時，Timestamp型）
 
-###userauthテーブル
+### userauthテーブル
 * name（ユーザー名，VARCHAR型255文字）
 * password（パスワード（MD5で暗号化して格納），CHAR型140文字）
 
-###userroleテーブル
+### userroleテーブル
 * name（ユーザー名，VARCHAR型255文字）
 * role（ロール，VARCHAR型255文字）
 
-###profileテーブル
+### profileテーブル
 * name		ユーザー名（必須）
 * realname	ユーザーの表示名
 * icon		アイコン画像のURL
@@ -29,9 +30,9 @@ https://github.com/taitiro/tsubuyaki.git
 * address		住所
 * homepage	ホームページURL
 
-##Model
+## Model
 
-###Beans（Beanのパッケージ）
+### Beans（Beanのパッケージ）
 * TsubuyakiBean（つぶやきを格納する）
   * つぶやいたユーザー名（必須）
   * つぶやきの内容（必須）
@@ -53,24 +54,22 @@ https://github.com/taitiro/tsubuyaki.git
 * UserArrayBean（ユーザーの集合を格納する）
   * UserBeanのリスト（ArrrayList）
 
-###dao
+### dao
 * DAOBase（データベースへの接続）
 * TsubuyakiDAO（つぶやき関連のデータベース操作）
 * UserDAO（ユーザー関連のデータベース操作）
 
-###exception
+### exception
 * DatabaseException（データベース関連の例外．ただServletExceptionをオーバーライドしているだけだったり）
 
-###parameter
+### parameter
 * DatabaseParameter（データベース接続の際のパラメータを格納）
 
-###filter
+### filter
 * ExampleFilter（いつもの）
 
-##Controller
-
-##Controller
-###Controler
+## Controller
+### Controler
 * TsubuyakiGetServlet（つぶやきを取得するという要求を受け取る）
 * TsubuyakiAddServlet（つぶやきを追加するという要求を受け取る）
 * TsubuyakiDeleteServlet（つぶやきを削除するという要求を受け取る）
@@ -80,8 +79,8 @@ https://github.com/taitiro/tsubuyaki.git
 * UserDeleteServlet（ユーザーを削除するという要求を受け取る）
 * UsersGetServlet（ユーザーの集合を取得するという要求を受け取る）
 
-##View
-###WebContent
+## View
+### WebContent
 * admin
   * index.html（中身を隠してるだけ．まぁログインするときの宛先として利用もしていたり）
   * userlist.jsp（ユーザー一覧画面を表示．admin限定）
@@ -94,8 +93,8 @@ https://github.com/taitiro/tsubuyaki.git
 * write.jsp（書き込み画面を表示．admin,user限定）
 * profilepage.jsp（プロフィール画面を表示．ただしこれを直接参照することはできない※必ずTsubuyakiGetServlet?name=ユーザー名から呼び出す）
 
-#ワークフロー
-##ログイン
+# ワークフロー
+## ログイン
 1. ログイン必要なページ
 2. login.html
 3. j_security_check（Tomcatの機能）
@@ -103,10 +102,10 @@ https://github.com/taitiro/tsubuyaki.git
 5. j_security_check（Tomcatの機能）
 6. ログイン必要なページorエラー
 
-##ログアウト
+## ログアウト
 1. logout.jsp
 
-##読込（TsubuyakiBeanとTsubuyakiArrayBeanを使用）
+## 読込（TsubuyakiBeanとTsubuyakiArrayBeanを使用）
 1. TsubuyakiGetServlet
 2. TsubuyakiDAO（DAOBaseをextend，以下省略）
 3. tsubuyaki（データベースのテーブル）
@@ -114,7 +113,7 @@ https://github.com/taitiro/tsubuyaki.git
 5. TsubuyakiGetServlet
 6. index.jsp
 
-##書き込み（TsubuyakiBeanを使用）
+## 書き込み（TsubuyakiBeanを使用）
 1. write.jsp
 2. TsubuyakiAddServlet
 3. TsubuyakiDAO
@@ -124,7 +123,7 @@ https://github.com/taitiro/tsubuyaki.git
 7. TsubuyakiGetServlet
 8. index.jsp
 
-##ユーザーのつぶやき一覧（UserBeanとTsubuyakiArrayBeanとTsubuyakiArrayBeanを使用）
+## ユーザーのつぶやき一覧（UserBeanとTsubuyakiArrayBeanとTsubuyakiArrayBeanを使用）
 1. TsubuyakiGetServlet
 2. TsubuyakiDAO
 3. tsubuyaki（データベースのテーブル）
@@ -135,7 +134,7 @@ https://github.com/taitiro/tsubuyaki.git
 8. TsubuyakiGetServlet
 9. profilepage.jsp
 
-##ユーザー一覧（UserArrayBeanとUserBeanを使用）
+## ユーザー一覧（UserArrayBeanとUserBeanを使用）
 1. UsersGetServlet
 2. UserDAO
 3. profile,userauth（データベースのテーブル）
@@ -143,7 +142,7 @@ https://github.com/taitiro/tsubuyaki.git
 5. UsersGetServlet
 6. userlist.jsp
 
-##ユーザー追加（UserBeanを使用）※編集・削除もだいたい同じ
+## ユーザー追加（UserBeanを使用）※編集・削除もだいたい同じ
 1. UserAddServlet
 2. UserDAO
 3. profile,userauth（データベースのテーブル）
